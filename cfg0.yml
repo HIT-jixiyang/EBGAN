@@ -1,0 +1,94 @@
+DATA_BASE_PATH: /extend/sz17_data
+REF_PATH: /extend/2019_png
+TRAIN_DIR_CLIPS: /extend/sz17_data/15-17_clips
+VALID_DIR_CLIPS: /extend/sz17_data/18_clips
+BASE_PATH: /extend/gru_tf_data
+SAVE_PATH: /extend/gru_tf_data/5l_stlstm_incept_ebgan
+SAVE_MODEL: /extend/gru_tf_data/5l_stlstm_incept_ebgan/Save
+SAVE_VALID: /extend/gru_tf_data/5l_stlstm_incept_ebgan/Valid
+SAVE_TEST: /extend/gru_tf_data/5l_stlstm_incept_ebgan/Test
+SAVE_SUMMARY: /extend/gru_tf_data/5l_stlstm_incept_ebgan/Summary
+SAVE_METRIC: /extend/gru_tf_data/5l_stlstm_incept_ebgan/Metric
+RAINY_TRAIN: ['201501010000', '201801010000']
+RAINY_VALID: ['201801010000', '201809180000']
+RAINY_TEST: ['201907310806', '201908011000']
+MAX_ITER: 300001
+SAVE_ITER: 5000
+VALID_ITER: 5000
+SUMMARY_ITER: 50
+DTYPE: single
+NORMALIZE: false
+FULL_H: 700
+FULL_W: 900
+MOVEMENT_THRESHOLD: 3000
+H: 900
+W: 900
+BATCH_SIZE: 1
+IN_CHANEL: 1
+RNN_CELL: st_lstm
+PRED_RNN_LAYERS: 4
+CONV_KERNEL:
+- - [7, 7, 1, 8]
+  - [5, 5, 1, 4]
+  - [11, 11, 1, 4]
+- - [5, 5, 16, 16]
+  - [7, 7, 16, 8]
+  - [3, 3, 16, 8]
+- - [7, 7, 32, 8]
+  - [5, 5, 32, 16]
+  - [3, 3, 32, 8]
+- - [3, 3, 32, 32]
+  - [5, 5, 32, 16]
+  - [1, 1, 32, 16]
+- - [3, 3, 64, 32]
+  - [5, 5, 64, 16]
+  - [1, 1, 64, 16]
+CONV_STRIDE: [2, 2, 2, 2, 2]
+ENCODER_GRU_FILTER: [16, 32, 32, 64, 64]
+ENCODER_GRU_INCHANEL: [16, 32, 32, 64, 64]
+DOWN_SAMPLE_TYPE: inception
+DECONV_KERNEL:
+- - [7, 7, 4, 16]
+  - [11, 11, 2, 16]
+  - [5, 5, 2, 16]
+- - [5, 5, 8, 32]
+  - [7, 7, 4, 32]
+  - [3, 3, 4, 32]
+- - [7, 7, 8, 32]
+  - [5, 5, 16, 32]
+  - [1, 1, 8, 32]
+- - [3, 3, 16, 64]
+  - [5, 5, 8, 64]
+  - [1, 1, 8, 64]
+- - [3, 3, 32, 64]
+  - [5, 5, 16, 64]
+  - [1, 1, 16, 64]
+DECONV_STRIDE: [2, 2, 2, 2, 2]
+DECODER_GRU_FILTER: [16, 32, 32, 64, 64]
+DECODER_GRU_INCHANEL: [16, 32, 32, 64, 64]
+UP_SAMPLE_TYPE: inception
+IN_SEQ: 5
+OUT_SEQ: 20
+LR: 0.0001
+RESIDUAL: false
+SEQUENCE_MODE: false
+I2H_KERNEL: [3, 3, 3, 3, 3]
+H2H_KERNEL: [5, 5, 3, 3, 3]
+ZR_a: 58.53
+ZR_b: 1.56
+EVALUATION_THRESHOLDS: [12.9777173087837, 28.577717308783704, 33.27378524114181, 40.71687681476854]
+USE_BALANCED_LOSS: false
+THRESHOLDS: [0.5, 2, 5, 10, 30]
+BALANCING_WEIGHTS: [1, 1, 2, 5, 10, 30]
+TEMPORAL_WEIGHT_TYPE: same
+TEMPORAL_WEIGHT_UPPER: 5
+L1_LAMBDA: 1.0
+L2_LAMBDA: 1.0
+GDL_LAMBDA: 0.0
+PREDICT_LENGTH: 20
+PREDICTION_H: 896
+PREDICTION_W: 896
+ADVERSARIAL: true
+ADV_LAMBDA: 1.0
+MARGIN: 1
+ADV_INVOLVE: 0
